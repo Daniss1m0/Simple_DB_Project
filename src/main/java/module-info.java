@@ -5,4 +5,6 @@ module simple_db_project {
 
     opens Controllers to javafx.fxml;
     exports Controllers;
+    opens ClientFiles to javafx.fxml;
+    exports ClientFiles;
 }
