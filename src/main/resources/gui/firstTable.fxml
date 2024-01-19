@@ -29,10 +29,8 @@
                   <TableColumn fx:id="Data_start" prefWidth="105.0" text="Data_start" />
                   <TableColumn fx:id="Data_koniec" prefWidth="111.0" text="Data_koniec" />
                   <TableColumn fx:id="Pracownik" prefWidth="63.0" text="Pracownik" />
-                  <TableColumn fx:id="Pracownicy_ID" prefWidth="86.0" text="Pracownicy_Id" />
                     </columns>
                 </TableView>
-            <CheckBox fx:id="Pracownicy_IdBox" layoutX="46.0" layoutY="198.0" mnemonicParsing="false" text="Pracownicy_Id" />
             </children>
         </AnchorPane>
         <Label layoutX="33.0" layoutY="14.0" text="Gospodarstwo" textFill="#00d8ff">
