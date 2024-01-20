@@ -108,9 +108,6 @@ public class AkcjaTableController {
                 Boolean PracownikFlag = PracownikBox.isSelected();
 
                 String query = polecenie.selectAkcja(idFlag, typFlag, Data_startFlag, Data_koniecFlag, PracownikFlag,false);
-
-                System.out.println(query);
-                String test = "SELECT id FROM AKCJA";
                 ResultSet resultSet = statement.executeQuery(query);
 
                 ObservableList<Akcja> dane = FXCollections.observableArrayList();

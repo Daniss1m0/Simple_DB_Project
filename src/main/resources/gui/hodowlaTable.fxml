@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #560319;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.HodowlaTableController">
     <children>
         <AnchorPane layoutY="100.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #fafafa;">
@@ -17,22 +12,30 @@
                         <Font size="18.0" />
                     </font>
                 </Button>
+                <Button fx:id="OdznaczButton" layoutX="46.0" layoutY="254.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="89.0" text="Odznacz">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Button>
+
                 <CheckBox fx:id="Id_hodowlaBox" layoutX="46.0" layoutY="65.0" mnemonicParsing="false" text="Id_hodowla" />
                 <CheckBox fx:id="Id_gospodarstwoBox" layoutX="46.0" layoutY="93.0" mnemonicParsing="false" text="Id_gospodarstwo" />
                 <CheckBox fx:id="Id_zwierzatBox" layoutX="46.0" layoutY="119.0" mnemonicParsing="false" text="Id_zwierzat" />
                 <CheckBox fx:id="IloscBox" layoutX="46.0" layoutY="145.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="89.0" text="Ilosc" />
-                <CheckBox fx:id="Zwierzeta_IdBox" layoutX="46.0" layoutY="172.0" mnemonicParsing="false" text="Zwierzeta_Id" />
+                <CheckBox fx:id="GatunekBox" layoutX="46.0" layoutY="169.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="89.0" text="Gatunek" />
+
+                <RadioButton fx:id="sumaRadio" userData="sumaRadio" layoutX="46" layoutY="200" text="Suma" toggleGroup="$mytoggleGroup"/>
+                <RadioButton fx:id="avgRadio" userData="avgRadio" layoutX="46" layoutY="227" text="Średnia" toggleGroup="$mytoggleGroup"/>
                 <TableView fx:id="Table" layoutX="236.0" layoutY="40.0" prefHeight="391.0" prefWidth="541.0">
                     <columns>
                         <TableColumn fx:id="Id_hodowla" prefWidth="79.0" text="Id_hodowla" />
                         <TableColumn fx:id="Id_gospodarstwo" prefWidth="107.0" text="Id_gospodarstwo" />
                         <TableColumn fx:id="Id_zwierzat" prefWidth="91.0" text="Id_zwierzat" />
                         <TableColumn fx:id="Ilosc" prefWidth="72.0" text="Ilosc" />
-                        <TableColumn fx:id="Zwierzeta_Id" prefWidth="78.0" text="Zwierzeta_Id" />
-                  <TableColumn fx:id="Gospodarstwo_Id" prefWidth="122.0" text="Gospodarstwo_Id" />
+                        <TableColumn fx:id="Gatunek" prefWidth="78.0" text="Gatunek" />
                     </columns>
                 </TableView>
-            <CheckBox fx:id="Gospodarstwo_IdBox" layoutX="46.0" layoutY="199.0" mnemonicParsing="false" text="Gospodarstwo_Id" />
+
             </children>
         </AnchorPane>
         <Label layoutX="33.0" layoutY="14.0" text="Gospodarstwo" textFill="#00d8ff">

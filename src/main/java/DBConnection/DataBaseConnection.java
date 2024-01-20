@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DataBaseConnection {
-    private String url = "jdbc:oracle:thin:@localhost:1521:ORCL"; // Zastąp z odpowiednim URL
-    private String user = "c##nazwa";
-    private String password = "haslo";
+    private String url = "jdbc:oracle:thin:@localhost:1521:XE"; // Zastąp z odpowiednim URL
+    private String user = "c##baza";
+    private String password = "baza";
 
     public Connection connect() {
         try {

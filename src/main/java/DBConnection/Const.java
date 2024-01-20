@@ -8,7 +8,9 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import javafx.scene.control.Toggle;
 import oracle.jdbc.OracleTypes;
 
 public class Const {
@@ -133,5 +135,127 @@ public class Const {
         return "{ call deleteFromZwierzeta(" + id + ") }";
     }
 
+    public String insertIntoPole(int powierzchnia, int nasionaId, int klasa) {
+        return "{ call DodajDoPole(" + powierzchnia + ", " + nasionaId + ", " + klasa + ") }";
+    }
+
+    public String insertIntoPoleWithId(int id, int powierzchnia, int nasionaId, int klasa) {
+        return "{ call DodajDoPoleId(" + id + ", " + powierzchnia + ", " + nasionaId + ", " + klasa + ") }";
+    }
+
+    public String updatePole(int id, int powierzchnia, int nasionaId, int klasa) {
+        return "{ call UpdatePole(" + id + ", " + powierzchnia + ", " + nasionaId + ", " + klasa + ") }";
+    }
+
+    public String deleteFromPole(int id) {
+        return "{ call DeleteFromPole(" + id + ") }";
+    }
+
+    public String selectPole(Boolean flag_id, Boolean flag_powierzchnia, Boolean flag_nasiona_id, Boolean flag_nasiona, Boolean flag_klasa, Boolean flag_siew, Boolean flag_zbiory) {
+        List<String> columns = new ArrayList<>();
+        String joinClause = "";
+
+        if(flag_id) {
+            columns.add("p.ID");
+        }
+        if (flag_powierzchnia) {
+            columns.add("p.POWIERZCHNIA");
+        }
+        if (flag_nasiona_id) {
+            columns.add("p.NASIONA_ID");
+        }
+        if (flag_nasiona) {
+            columns.add("n.NAZWA as nasiona"); // Alias 'nazwaNasiona' for clarity
+            joinClause = " INNER JOIN NASIONA n ON p.NASIONA_ID = n.ID";
+        }
+        if (flag_klasa) {
+            columns.add("p.KLASA");
+        }
+        if (flag_siew) {
+            columns.add("n.SIEW as siew"); // Alias 'siew' for clarity
+            // Make sure the join clause is included when siew is selected
+            if (joinClause.isEmpty()) {
+                joinClause = " INNER JOIN NASIONA n ON p.NASIONA_ID = n.ID";
+            }
+        }
+        if (flag_zbiory) {
+            columns.add("n.ZBIORY as zbiory"); // Alias 'zbiory' for clarity
+            // Make sure the join clause is included when zbiory is selected
+            if (joinClause.isEmpty()) {
+                joinClause = " INNER JOIN NASIONA n ON p.NASIONA_ID = n.ID";
+            }
+        }
+        if (columns.isEmpty()) {
+            return "SELECT p.*, n.NAZWA as nazwaNasiona, n.SIEW as siew, n.ZBIORY as zbiory FROM POLE p" + joinClause; // Return all columns if no flags are set
+        }
+
+        String selectQuery = "SELECT " + String.join(", ", columns) + " FROM POLE p" + joinClause;
+        return selectQuery;
+    }
+
+    public String selectHodowla(Boolean flag_id_hodowla, Boolean flag_id_gospodarstwo, Boolean flag_id_zwierzat, Boolean flag_ilosc, Boolean flag_gatunek, Toggle toggle) {
+        List<String> columns = new ArrayList<>();
+        String joinClause = "";
+        String groupByClause = "";
+        List<String> nonAggregatedColumns = new ArrayList<>(); // Initialize nonAggregatedColumns
+
+        if (flag_id_hodowla) {
+            columns.add("h.ID_HODOWLA");
+        }
+        if (flag_id_gospodarstwo) {
+            columns.add("h.ID_GOSPODARSTWO");
+        }
+        if (flag_id_zwierzat) {
+            columns.add("h.ID_ZWIERZAT");
+        }
+        if (flag_ilosc) {
+            columns.add("h.ILOSC");
+        }
+
+        if (flag_gatunek) {
+            joinClause = " FULL OUTER JOIN ZWIERZETA z ON h.ID_ZWIERZAT = z.ID_ZWIERZETA";
+            columns.add("z.GATUNEK as gatunek");
+        }
+
+        // Handle the selected toggle option (SUM or AVG)
+        if (toggle != null && toggle.getUserData() != null) {
+            String aggregateFunction = toggle.getUserData().toString().equals("sumaRadio") ? "SUM" : "AVG";
+            String iloscColumn = columns.contains("h.ILOSC") ? "h.ILOSC" : "0"; // Handle the case when ILOSC is not selected
+            columns.remove("h.ILOSC");
+            columns.add(aggregateFunction + "(" + iloscColumn + ") as ilosc");
+
+            // Add the non-aggregated columns to the list
+            nonAggregatedColumns = columns.stream()
+                    .filter(col -> !col.startsWith("SUM") && !col.startsWith("AVG"))
+                    .collect(Collectors.toList());
+        }
+
+        // Build the SELECT query
+        String selectQuery = "SELECT " + String.join(", ", columns) + " FROM HODOWLA h" + joinClause;
+
+        // Build the GROUP BY clause if there are non-aggregated columns
+        if (!nonAggregatedColumns.isEmpty()) {
+            groupByClause = " GROUP BY " + nonAggregatedColumns.stream()
+                    .map(column -> {
+                        // Map the alias to the original column name if it's an alias
+                        if (column.endsWith(" as gatunek")) {
+                            return column.replace(" as gatunek", "");
+                        } else {
+                            return column;
+                        }
+                    })
+                    .collect(Collectors.joining(", "));
+        }
+
+        // Add the GROUP BY clause to the SELECT query with a space before it
+        if (!groupByClause.isEmpty()) {
+            selectQuery += groupByClause;
+        }
+
+        // Ensure there is a semicolon at the end of the SQL query
+
+
+        return selectQuery;
+    }
 
 }
