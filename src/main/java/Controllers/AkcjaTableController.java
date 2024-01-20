@@ -23,7 +23,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 
-public class FirstTableController {
+public class AkcjaTableController {
 
     @FXML
     private Button PotwiedzButton;

@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 
-public class SecondTableController {
+public class ZwierzetaTableController {
 
     @FXML
     private Button PotwiedzButton;

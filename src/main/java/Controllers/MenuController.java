@@ -11,10 +11,16 @@ import javafx.stage.Stage;
 public class MenuController {
 
     @FXML
-    private Button tableFirstButton;
+    private Button akcjaTableButton;
 
     @FXML
-    private Button tableSecondButton;
+    private Button zwierzetaTableButton;
+
+    @FXML
+    private Button poleTableButton;
+
+    @FXML
+    private Button hodowlaTableButton;
 
     @FXML
     private Button settingsButton;
@@ -24,14 +30,14 @@ public class MenuController {
 
     @FXML
     void initialize() {
-        tableFirstButton.setOnAction(event -> {
+        akcjaTableButton.setOnAction(event -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/firstTable.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/akcjaTable.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);
 
-                Stage stage = (Stage) tableFirstButton.getScene().getWindow();
+                Stage stage = (Stage) akcjaTableButton.getScene().getWindow();
 
                 stage.setScene(scene);
 
@@ -40,14 +46,46 @@ public class MenuController {
             }
         });
 
-        tableSecondButton.setOnAction(event -> {
+        zwierzetaTableButton.setOnAction(event -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/secondTable.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/zwierzetaTable.fxml"));
                 Parent root = loader.load();
 
                 Scene scene = new Scene(root);
 
-                Stage stage = (Stage) tableFirstButton.getScene().getWindow();
+                Stage stage = (Stage) zwierzetaTableButton.getScene().getWindow();
+
+                stage.setScene(scene);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        poleTableButton.setOnAction(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/poleTable.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+
+                Stage stage = (Stage) poleTableButton.getScene().getWindow();
+
+                stage.setScene(scene);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        hodowlaTableButton.setOnAction(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/hodowlaTable.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = new Scene(root);
+
+                Stage stage = (Stage) hodowlaTableButton.getScene().getWindow();
 
                 stage.setScene(scene);
 
@@ -63,7 +101,7 @@ public class MenuController {
 
                 Scene scene = new Scene(root);
 
-                Stage stage = (Stage) tableFirstButton.getScene().getWindow();
+                Stage stage = (Stage) settingsButton.getScene().getWindow();
 
                 stage.setScene(scene);
 

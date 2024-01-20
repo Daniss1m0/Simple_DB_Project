@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #560319;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SecondTableController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #560319;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PoleTableController">
     <children>
         <AnchorPane layoutY="100.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #fafafa;">
             <children>
@@ -17,12 +17,18 @@
                         <Font size="18.0" />
                     </font>
                 </Button>
-                <CheckBox fx:id="IDBox" layoutX="46.0" layoutY="65.0" mnemonicParsing="false" text="ID" />
-                <CheckBox fx:id="GatunekBox" layoutX="46.0" layoutY="93.0" mnemonicParsing="false" text="Gatunek" />
-                <TableView fx:id="Table" layoutX="591.0" layoutY="40.0" prefHeight="391.0" prefWidth="186.0">
+                <CheckBox fx:id="IdBox" layoutX="46.0" layoutY="65.0" mnemonicParsing="false" text="Id" />
+                <CheckBox fx:id="PowierzchniaBox" layoutX="46.0" layoutY="93.0" mnemonicParsing="false" text="Powierzchnia" />
+                <CheckBox fx:id="NasionaBox" layoutX="46.0" layoutY="119.0" mnemonicParsing="false" text="Nasiona" />
+                <CheckBox fx:id="KlasaBox" layoutX="46.0" layoutY="145.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="89.0" text="Klasa" />
+                <CheckBox fx:id="Nasiona_IdBox" layoutX="46.0" layoutY="172.0" mnemonicParsing="false" text="Nasiona_Id" />
+                <TableView fx:id="Table" layoutX="236.0" layoutY="40.0" prefHeight="391.0" prefWidth="541.0">
                     <columns>
-                        <TableColumn fx:id="ID" prefWidth="53.0" text="ID" />
-                        <TableColumn fx:id="Gatunek" prefWidth="132.0" text="Gatunek" />
+                        <TableColumn fx:id="Id" prefWidth="53.0" text="Id" />
+                        <TableColumn fx:id="Powierzchnia" prefWidth="117.0" text="Powierzchnia" />
+                        <TableColumn fx:id="Nasiona" prefWidth="108.0" text="Nasiona" />
+                        <TableColumn fx:id="Klasa" prefWidth="115.0" text="Klasa" />
+                        <TableColumn fx:id="Nasiona_Id" prefWidth="147.0" text="Nasiona_Id" />
                     </columns>
                 </TableView>
             </children>

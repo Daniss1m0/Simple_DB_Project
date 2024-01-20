@@ -83,8 +83,8 @@ public class Const {
         ObservableList<Akcja> akcje = FXCollections.observableArrayList();
         // Tutaj skonfiguruj swoje dane połączeniowe
         String url = "jdbc:oracle:thin:@twoj_host:port:dbname";
-        String user = "username";
-        String password = "password";
+        String user = "c##nazwa";
+        String password = "haslo";
 
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
             CallableStatement stmt = conn.prepareCall("{call PobierzAkcje(?)}");

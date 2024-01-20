@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #560319;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FirstTableController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #560319;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ZwierzetaTableController">
     <children>
         <AnchorPane layoutY="100.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #fafafa;">
             <children>
@@ -18,17 +18,11 @@
                     </font>
                 </Button>
                 <CheckBox fx:id="IDBox" layoutX="46.0" layoutY="65.0" mnemonicParsing="false" text="ID" />
-                <CheckBox fx:id="TypBox" layoutX="46.0" layoutY="93.0" mnemonicParsing="false" text="Typ" />
-                <CheckBox fx:id="Data_startBox" layoutX="46.0" layoutY="119.0" mnemonicParsing="false" text="Data_start" />
-                <CheckBox fx:id="Data_koniecBox" layoutX="46.0" layoutY="145.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="89.0" text="Data_koniec" />
-                <CheckBox fx:id="PracownikBox" layoutX="46.0" layoutY="172.0" mnemonicParsing="false" text="Pracownik" />
-                <TableView fx:id="Table" layoutX="236.0" layoutY="40.0" prefHeight="391.0" prefWidth="541.0">
+                <CheckBox fx:id="GatunekBox" layoutX="46.0" layoutY="93.0" mnemonicParsing="false" text="Gatunek" />
+                <TableView fx:id="Table" layoutX="591.0" layoutY="40.0" prefHeight="391.0" prefWidth="186.0">
                     <columns>
                         <TableColumn fx:id="ID" prefWidth="53.0" text="ID" />
-                        <TableColumn fx:id="Typ" prefWidth="122.0" text="Typ" />
-                  <TableColumn fx:id="Data_start" prefWidth="105.0" text="Data_start" />
-                  <TableColumn fx:id="Data_koniec" prefWidth="111.0" text="Data_koniec" />
-                  <TableColumn fx:id="Pracownik" prefWidth="63.0" text="Pracownik" />
+                        <TableColumn fx:id="Gatunek" prefWidth="132.0" text="Gatunek" />
                     </columns>
                 </TableView>
             </children>
